@@ -8,9 +8,6 @@ import "./styles.css";
 import "./styles.scss";
 
 let store = createStore(todoApp)
-
-
-
 var mountNode = document.getElementById("app");
 
 ReactDOM.render(
