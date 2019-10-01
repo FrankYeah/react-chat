@@ -1,6 +1,6 @@
-# empty-project
+# React + Redux
 
-Empty project.
+React + Redux
 
 ## Building and running on localhost
 
@@ -31,7 +31,3 @@ npm run build-dev
 ## Running
 
 Open the file `dist/index.html` in your browser
-
-## Credits
-
-Made with [createapp.dev](https://createapp.dev/)
