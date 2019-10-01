@@ -1,0 +1,30 @@
+# Java related
+*.class
+
+*.jar
+*.war
+*.ear
+
+# Grandle related
+build/
+.gradle/
+
+# Mac related
+.DS_Store
+._*
+
+# VSCode related
+.classpath
+.project
+.settings/
+bin/
+.vscode
+
+# Dependency directories
+node_modules
+
+#ide related
+.idea/
+*.iml
+bin/
+out/
