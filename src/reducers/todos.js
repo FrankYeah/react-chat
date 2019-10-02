@@ -14,7 +14,8 @@ const todo = (state = {}, action) => {
         return Object.assign({}, state, {
           completed: !state.completed
         })
-  
+        
+      // 不處理直接回傳
       default:
         return state
     }

@@ -11,6 +11,7 @@ const mapStateToProps = (state, ownProps) => {
 const mapDispatchToProps = (dispatch, ownProps) => {
   return {
     onClick: () => {
+      // 點擊觸發改變
       dispatch(setVisibilityFilter(ownProps.filter))
     }
   }

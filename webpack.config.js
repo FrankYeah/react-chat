@@ -1,6 +1,8 @@
 const webpack = require('webpack');
 const path = require('path');
+const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin')
+// mini-css-extract-plugin
 
 const config = {
   entry: './src/index.js',
@@ -11,6 +13,17 @@ const config = {
   module: {
     rules: [
       {
+        test: /\.(png|jpg|gif)$/i,
+        use: [
+          {
+            loader: 'url-loader',
+            options: {
+              limit: 8192
+            }
+          }
+        ]
+      },
+      {
         test: /\.(js|jsx)$/,
         use: 'babel-loader',
         exclude: /node_modules/
@@ -19,17 +32,15 @@ const config = {
         test: /\.css$/,
         use: [
           'style-loader',
-          'css-loader'
+          {
+            loader: 'css-loader',
+            options: {
+              importLoaders: 1
+            }
+          },
+          'postcss-loader'
         ],
         exclude: /\.module\.css$/
-      },
-      {
-        test: /\.scss$/,
-        use: [
-          'style-loader',
-          'css-loader',
-          'sass-loader'
-        ]
       },
       {
         test: /\.css$/,
@@ -41,9 +52,18 @@ const config = {
               importLoaders: 1,
               modules: true
             }
-          }
+          },
+          'postcss-loader'
         ],
         include: /\.module\.css$/
+      },
+      {
+        test: /\.scss$/,
+        use: [
+          'style-loader',
+          'css-loader',
+          'sass-loader'
+        ]
       }
     ]
   },
@@ -57,6 +77,9 @@ const config = {
     contentBase: './dist'
   },
   plugins: [
+    new CleanWebpackPlugin({
+      cleanAfterEveryBuildPatterns: ['dist']
+    }),
     new HtmlWebpackPlugin({
         template: require('html-webpack-template'),
         inject: false,
